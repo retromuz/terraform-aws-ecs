@@ -23,6 +23,24 @@ resource "aws_iam_role" "ecs" {
 EOF
 }
 
+resource "aws_iam_role_policy" "ecs_lotjm" {
+  name = "ecs_lotjm_policy"
+  role = aws_iam_role.ecs.name
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = [
+          "ecs:ListTagsForResource",
+        ]
+        Effect   = "Allow"
+        Resource = "*"
+      },
+    ]
+  })
+}
+
 resource "aws_iam_role_policy_attachment" "ecs_ssm" {
   role       = aws_iam_role.ecs.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
