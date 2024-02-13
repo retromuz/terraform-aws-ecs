@@ -5,10 +5,10 @@ data "aws_ami" "amzn" {
 
   filter {
     name   = "name"
-    values = ["amzn-ami-*"]
+    values = ["al2023-ami-*"]
   }
 
-  name_regex = ".+-amazon-ecs-optimized$"
+  name_regex = ".+-ecs-hvm-2023.0.202402.+x86_64$"
 }
 
 data "aws_caller_identity" "current" {}
