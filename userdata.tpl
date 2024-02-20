@@ -15,7 +15,7 @@ echo "fs.file-max=65536" >> /etc/sysctl.conf
 
 echo "### INSTALL PACKAGES"
 yum update -y
-yum install -y amazon-efs-utils aws-cli
+yum install -y amazon-efs-utils aws-cli htop
 
 
 echo "### INSTALL SSM AGENT"
